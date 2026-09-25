@@ -1,0 +1,2 @@
+<img class="p_header_pc" src="<?php echo get_template_directory_uri(); ?>/assets/images/common/p_header.webp" alt="">
+<img class="p_header_sp" src="<?php echo get_template_directory_uri(); ?>/assets/images/common/p_header_sp.webp" alt="">
