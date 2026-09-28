@@ -918,7 +918,6 @@ img {
 }
 @media screen and (min-width: 1001px) {
   #header .drawer-nav {
-    width: -moz-fit-content;
     width: fit-content;
     height: inherit;
     justify-content: space-between;
@@ -948,7 +947,6 @@ img {
 }
 #header .drawer-nav .drawer-menu {
   justify-content: space-between;
-  width: -moz-fit-content;
   width: fit-content;
   align-items: center;
   margin-top: 28px;
@@ -1268,7 +1266,6 @@ img {
   border: solid 1px var(--white-color);
   border-radius: 100px;
   padding: 8px 20px;
-  height: -moz-fit-content;
   height: fit-content;
 }
 #footer .footer_content .footer_nav_right .footer_sns {
@@ -1378,7 +1375,6 @@ img {
     top: inherit;
     bottom: 0px;
     position: relative;
-    height: -moz-fit-content;
     height: fit-content;
   }
 }
@@ -1406,13 +1402,11 @@ img {
   }
 }
 .breadcrumb-trail__contents__item {
-  min-width: -moz-fit-content;
   min-width: fit-content;
 }
 .breadcrumb-trail__contents__arrow {
   width: 8px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   margin: 0 16px;
 }
 @media screen and (max-width: 768px) {
@@ -1482,9 +1476,6 @@ form .required {
 }
 form .optional {
   background-color: #E6E6E6;
-}
-form ::-moz-placeholder {
-  color: #A3A3A3;
 }
 form ::placeholder {
   color: #A3A3A3;
@@ -1666,7 +1657,6 @@ form .radio-btn-wrapper input[type=radio]:checked + .wpcf7-list-item-label::afte
 }
 form .form_privacy {
   display: flex;
-  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
   margin-top: 60px;
@@ -1978,8 +1968,7 @@ form .recapcha-txt a {
   height: auto;
   border-radius: 16px;
   aspect-ratio: 1.91/1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .section-post h1 {
   margin-bottom: 1em;
@@ -2055,7 +2044,6 @@ form .recapcha-txt a {
   display: block;
   width: 100%;
   max-width: 240px;
-  min-width: -moz-max-content;
   min-width: max-content;
   border: solid 1px var(--main-color);
   padding: 20px;
@@ -2091,7 +2079,6 @@ form .recapcha-txt a {
 }
 
 .pagenation {
-  width: -moz-max-content;
   width: max-content;
   margin: auto;
   margin-top: 120px;
@@ -2321,8 +2308,7 @@ form .recapcha-txt a {
   width: 100%;
   height: 100%;
   aspect-ratio: 1.91/1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .section-archive .archive__item .title {
   display: -webkit-box;
@@ -2511,4 +2497,4 @@ form .recapcha-txt a {
   display: inline-flex;
   align-items: center;
   gap: 16px;
-}/*# sourceMappingURL=common.css.map */
+}

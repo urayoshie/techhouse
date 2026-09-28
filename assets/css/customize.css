@@ -49,8 +49,7 @@
 }
 .top-sec .sec_title img {
   width: 67px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 @media screen and (max-width: 1200px) {
   .top-sec .sec_title img {
@@ -85,7 +84,6 @@
   top: 6px;
   left: 56px;
   position: absolute;
-  height: -moz-max-content;
   height: max-content;
 }
 @media screen and (max-width: 1200px) {
@@ -224,7 +222,6 @@
 @media screen and (max-width: 768px) {
   #top .section-mv__story_sp {
     display: block;
-    width: -moz-fit-content;
     width: fit-content;
     margin: 0 auto 36px;
   }
@@ -402,7 +399,6 @@
 }
 #top .section-service__text {
   display: block;
-  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
   text-align: center;
@@ -469,8 +465,7 @@
 #top .section-style ul img {
   height: 160px;
   max-width: 70%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   display: block;
 }
 @media screen and (max-width: 768px) {
@@ -800,7 +795,6 @@
 /*----------------------------------------------------------*/
 #company .section-company table {
   width: 100%;
-  max-width: -moz-fit-content;
   max-width: fit-content;
   margin: auto;
 }
@@ -916,8 +910,7 @@
 }
 #company .section-member ul li .sns a img {
   display: block;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 /*----------------------------------------------------------*/
@@ -1058,8 +1051,7 @@
 }
 #service .section-issue__list img {
   display: block;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 #service .section-issue__item p {
   font-weight: 500;
@@ -1206,7 +1198,6 @@
   background-color: var(--white-color);
   padding: 16px 32px;
   border-radius: 30px 30px 0 0;
-  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
   margin-top: -76px;
@@ -2310,7 +2301,6 @@
 }
 .pennyshot-club__section-about-club__step-label {
   padding: 8px 16px;
-  width: -moz-fit-content;
   width: fit-content;
   position: relative;
 }
@@ -2401,8 +2391,7 @@
   display: block;
   width: 80px;
   height: 80px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .pennyshot-club__section-about-club__item-divider {
   width: 100%;
@@ -2854,7 +2843,6 @@
   margin-right: 4px;
 }
 .pennyshot-club__section-certificat__item__certificate {
-  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
 }
@@ -2913,8 +2901,7 @@
 .pennyshot-club__section-operation__item__logo {
   width: 100%;
   height: 46px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 .pennyshot-club__section-operation__item__line {
   width: 100%;
@@ -3012,4 +2999,4 @@
 }
 .pennyshot-club__section-contact__form input[type=submit] {
   background-color: var(--green-color);
-}/*# sourceMappingURL=customize.css.map */
+}
