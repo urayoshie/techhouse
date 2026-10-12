@@ -499,6 +499,13 @@ img {
         border-radius: 12px;
     }
 }
+.radius-20 {
+    border-radius: 20px;
+
+    @media screen and (max-width: 768px) {
+        border-radius: 12px;
+    }
+}
 
 .radius-16 {
     border-radius: 16px;
@@ -1352,57 +1359,36 @@ img {
     }
 
     .sec_title {
-        @media screen and (max-width: 1200px) {
-            display: flex;
-        }
+        display: flex;
 
         img {
-            width: 67px;
+            width: 72px;
             height: 100%;
-
-            @media screen and (max-width: 1200px) {
+            margin-right: 4px;
+            margin-top: -2px;
+            @media screen and (max-width: 768px) {
                 width: 36px;
-                margin-right: 4px;
                 margin-top: 2px;
             }
         }
 
         .sec_title_text {
             position: relative;
-            left: 60px;
-
-            @media screen and (max-width: 1200px) {
-                left: 0;
-            }
+            left: 0;
 
             h1 {
-                transform: rotate(90deg);
-                transform-origin: left top;
-                margin-left: 7px;
                 font-family: Helvetica, "Noto Sans JP", sans-serif;
-
-                @media screen and (max-width: 1200px) {
-                    transform: none;
-                    margin-left: 0;
-                    line-height: 1;
-                }
+                transform: none;
+                margin-left: 0;
+                line-height: 1;
             }
 
             .sec_title_jp {
-                position: absolute;
-                writing-mode: vertical-rl;
-                left: -6px;
-                top: 0;
-                height: 220px;
-
-                @media screen and (max-width: 1200px) {
-                    writing-mode: inherit;
-                    left: 0;
-                    top: inherit;
-                    bottom: 0px;
-                    position: relative;
-                    height: fit-content;
-                }
+                position: relative;
+                left: 0;
+                top: inherit;
+                bottom: 0px;
+                height: fit-content;
             }
         }
     }

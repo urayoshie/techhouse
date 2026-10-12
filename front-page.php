@@ -113,6 +113,21 @@
       </div>
     </section>
 
+    <section class="section-service section bg-gray">
+      <div class="inner top-sec">
+        <div class="sec_title">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/title.png" alt="">
+          <div class="sec_title_text">
+            <h1>R&D</h1>
+            <p class="sec_title_jp">研究開発</p>
+          </div>
+        </div>
+        <div class="sec_contents">
+          <?php get_template_part('template-parts/rd'); ?>
+        </div>
+      </div>
+    </section>
+
     <section class="section-style section">
       <div class="inner top-sec">
         <div class="sec_title">
