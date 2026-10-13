@@ -64,6 +64,9 @@
             </li>
 
             <!-- 既存メニュー -->
+            <li><a class="drawer-menu-item" href="<?php echo home_url('/rd'); ?>">
+                <p>R&D</p>
+              </a></li>
             <li><a class="drawer-menu-item" href="<?php echo home_url('/style'); ?>">
                 <p>STYLE</p>
               </a></li>

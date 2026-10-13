@@ -23,6 +23,9 @@
               </a></li>
           </ul>
           <ul class="footer_nav__menu">
+            <li><a href="<?php echo home_url('/rd'); ?>">
+                <p class="bold">R&D</p>
+              </a></li>
             <li><a href="<?php echo home_url('/style'); ?>">
                 <p class="bold">STYLE</p>
               </a></li>

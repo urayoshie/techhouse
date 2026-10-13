@@ -13,6 +13,7 @@
     --light-purple-color: #F1EDF9;
     --red-color: #E94753;
     --orange-color: #F1631C;
+    --orange-color2: #FFA41C;
     --purple-color: #6D28D9;
     --green-color: #0A8E52;
     --light-green-color: #F1FBF6;
@@ -479,6 +480,124 @@
         }
     }
 
+    // Top_R&D
+    .rd {
+
+        &__lead_title {
+            font-size: 3.2rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 2.4rem;
+            }
+        }
+
+        &__list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+
+            @media screen and (max-width: 768px) {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        &__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 32px;
+
+            @media screen and (max-width: 768px) {
+                padding: 20px;
+            }
+        }
+
+        &__item_title {
+            font-size: 2.8rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 2.4rem;
+            }
+        }
+
+        &__tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--white-color);
+            border: solid 1px #CCC;
+            border-radius: 999px;
+            padding: 2px 12px 3px 12px;
+            font-size: 1.5rem;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.3rem;
+            }
+
+            &--red {
+                .rd__tag_dot {
+                    background-color: var(--accent-color);
+                }
+            }
+
+            &--orange {
+                .rd__tag_dot {
+                    background-color: var(--orange-color2);
+                }
+            }
+        }
+
+        &__tag_dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        &__item_link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0 8px;
+            font-size: 1.6rem;
+            margin-top: auto; // 本文の行数に関わらず、常にカード下部に固定する
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.4rem;
+            }
+            // カード(li)全体をクリック範囲にする
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+            }
+
+            img {
+                width: 32px;
+            }
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        &__item_status {
+            display: block;
+            text-align: right;
+            opacity: 0.5;
+            font-size: 1.6rem;
+            margin-top: auto; // 本文の行数に関わらず、常にカード下部に固定する
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.4rem;
+            }
+
+        }
+
+        &__btn_wrapper {
+            text-align: center;
+        }
+    }
+
     // Top_Style
     .section-style {
         background-image: url("../images/common/bg-texture.webp");
@@ -569,6 +688,16 @@
 /* STYLEページ */
 /*----------------------------------------------------------*/
 #style {
+    .p_header {
+        .sec_title {
+            margin-top: 90px;
+
+            @media screen and (max-width: 1200px) {
+                margin-top: 7.5vw;
+            }
+        }
+    }
+
     .style_contents {
         display: grid;
         align-items: center;
@@ -688,6 +817,16 @@
 /* お知らせ一覧ページ固有 */
 /*----------------------------------------------------------*/
 #news {
+    .p_header {
+        .sec_title {
+            margin-top: 90px;
+
+            @media screen and (max-width: 1200px) {
+                margin-top: 7.5vw;
+            }
+        }
+    }
+
     .archive__item {
         .category {
             padding: 5px 12px;
@@ -715,6 +854,16 @@
 /* メディア一覧ページ固有 */
 /*----------------------------------------------------------*/
 #media_post {
+    .p_header {
+        .sec_title {
+            margin-top: 90px;
+
+            @media screen and (max-width: 1200px) {
+                margin-top: 7.5vw;
+            }
+        }
+    }
+
     h2 {
         @media (max-width: 768px) {
             font-size: 2.4rem;
@@ -900,6 +1049,16 @@
 /* COMPANYページ */
 /*----------------------------------------------------------*/
 #company {
+    .p_header {
+        .sec_title {
+            margin-top: 90px;
+
+            @media screen and (max-width: 1200px) {
+                margin-top: 7.5vw;
+            }
+        }
+    }
+
     .section-company {
         table {
             width: 100%;
@@ -2355,6 +2514,12 @@
     .p_header {
         .inner {
             .sec_title {
+                margin-top: 90px;
+
+                @media screen and (max-width: 1200px) {
+                    margin-top: 7.5vw;
+                }
+
                 img {
                     @media screen and (max-width: 500px) {
                         width: 32px;
@@ -2393,6 +2558,16 @@
 /* CONTACTページ */
 /*----------------------------------------------------------*/
 #contact {
+    .p_header {
+        .sec_title {
+            margin-top: 90px;
+
+            @media screen and (max-width: 1200px) {
+                margin-top: 7.5vw;
+            }
+        }
+    }
+
     .section-contact__width {
         width: 100%;
         max-width: 1000px;
@@ -3419,6 +3594,444 @@
 
         input[type="submit"] {
             background-color: var(--green-color);
+        }
+    }
+}
+
+
+/*----------------------------------------------------------*/
+/* R&Dページ */
+/*----------------------------------------------------------*/
+#rd {
+
+    .p_header {
+        .sec_title {
+            margin-top: 90px;
+
+            @media screen and (max-width: 1200px) {
+                margin-top: 7.5vw;
+            }
+        }
+    }
+}
+
+// R&D子ページ（page-rd-children.php）用
+// 先頭要素の margin-top が body まで突き抜けて固定ヘッダー（#header）のロゴが押し下げられないよう、余白を .rd-children 内に閉じ込める
+.rd-children {
+    display: flow-root;
+}
+
+// 見出しラベル（rd内共通）
+.rd-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+    @media screen and (max-width: 768px) {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    &__bar {
+        display: block;
+        width: 14px;
+        height: 4px;
+        background-color: var(--main-color);
+    }
+}
+
+// RD-ABOUT-TOP
+.rd-hero {
+    &__card {
+        // 画像を差し替えたときは、キャッシュ対策として ?v= の日付を差し替えた日に更新する
+        background-image: url("../images/rd/rd_top_box.webp?v=20261002");
+        background-size: cover;
+        background-position: center;
+        padding: 60px 100px;
+
+        @media screen and (max-width: 768px) {
+            padding: 32px 20px;
+        }
+
+        // 383px以下で「日本が先に直面する課題を」の「を」が改行されるので、左右の余白を縮小
+        @media screen and (max-width: 383px) {
+            padding: 32px 16px;
+        }
+    }
+
+    &__title {
+        font-size: 3.2rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+
+        // 374px以下で「日本が先に直面する課題を」の「を」が改行されるので、字間を詰める
+        @media screen and (max-width: 374px) {
+            letter-spacing: -0.01em;
+        }
+
+        // 359px以下では字間を詰めても収まらないので、文字サイズを縮小
+        @media screen and (max-width: 359px) {
+            font-size: 2rem;
+        }
+    }
+
+    &__text {
+        font-size: 1.8rem;
+
+        // rd-hero__titleの縮小に合わせて、同じ比率（18px / 24px）で縮小
+        @media screen and (max-width: 359px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    // 500px以下でのみ改行
+    &__sp-break {
+        display: none;
+
+        @media screen and (max-width: 500px) {
+            display: block;
+        }
+    }
+}
+
+// Why We Do R&D
+.rd-why {
+    &__title {
+        font-size: 3.2rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__sub {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.8rem;
+        @media screen and (max-width: 768px) {
+            font-size: 1.6rem;
+        }
+    }
+
+    &__sub_mark {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+        background-color: var(--main-color);
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__item {
+        padding: 24px 32px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        @media screen and (max-width: 768px) {
+            padding: 20px;
+        }
+    }
+
+    &__item_title {
+        font-size: 2.4rem;
+        line-height: 1.5;
+
+        // 1239px以下では3つ目のタイトルが2行になるため、3つとも2行分の高さを確保して本文位置を揃える。
+        // 余白はタイトル上ではなく、タイトルと本文の間に出すため上揃えにする
+        @media screen and (max-width: 1239px) {
+            min-height: calc(1.5em * 2);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 2rem;
+            // カード幅に余裕ができてタイトルが折り返されなくなるため、2行分の高さ確保を解除する
+            display: block;
+            min-height: 0;
+        }
+    }
+}
+
+// What is Our R&D
+.rd-about {
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+
+        @media screen and (max-width: 1200px) {
+            grid-template-columns: 1fr;
+        }
+        @media screen and (max-width: 768px) {
+            gap: 32px;
+        }
+    }
+
+    &__title {
+        font-size: 3.2rem;
+
+        // 3.2remだと「TechHouse.Works全体を横断して、」が1行に収まらず「て、」が溢れるので対応
+        @media screen and (max-width: 1350px) and (min-width: 1201px) {
+            font-size: 2.8rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    // 500px以下では改行をなくす
+    &__sp-break {
+        @media screen and (max-width: 500px) {
+            display: none;
+        }
+    }
+}
+
+// R&D Portfolio
+.rd-portfolio {
+    background-color: #DBDBDB;
+    background-image:
+        linear-gradient(to right, #E2E2E2 2px, transparent 2px),
+        linear-gradient(to bottom, #E2E2E2 2px, transparent 2px);
+    background-size: 18px 18px;
+
+    &__title {
+        font-size: 3.2rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__legend {
+        background-color: rgba(252, 252, 252, 0.4);
+        padding: 20px 24px;
+        margin-bottom: 32px;
+
+        @media screen and (max-width: 768px) {
+            padding: 20px;
+        }
+
+        // legend内のタグは、ボーダーなし・幅固定・左寄せ
+        .rd-portfolio__tag {
+            border: none;
+            justify-content: flex-start;
+            width: 130px;
+            flex-shrink: 0;
+            white-space: nowrap;
+
+            // 768px以下では文字の長さに合わせた幅にする
+            @media screen and (max-width: 768px) {
+                width: fit-content;
+            }
+        }
+    }
+
+    &__legend_item {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        &:not(:last-child) {
+            margin-bottom: 16px;
+        }
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+
+        @media screen and (max-width: 768px) {
+            padding: 24px;
+        }
+    }
+
+    &__item_title {
+        font-size: 2.8rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__item_link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0 8px;
+        margin-top: auto; // 本文の行数に関わらず、常にカード下部に固定する
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+
+        img {
+            width: 32px;
+        }
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &__item_status {
+        display: block;
+        text-align: right;
+        opacity: 0.5;
+        margin-top: auto; // 本文の行数に関わらず、常にカード下部に固定する
+    }
+
+    &__tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        line-height: 1;
+        background-color: var(--white-color);
+        border: solid 1px #CCC;
+        border-radius: 999px;
+        padding: 8px 12px 9px;
+        font-size: 1.5rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.3rem;
+        }
+
+        &--red {
+            .rd-portfolio__tag_dot {
+                background-color: var(--accent-color);
+            }
+        }
+
+        &--orange {
+            .rd-portfolio__tag_dot {
+                background-color: var(--orange-color2);
+            }
+        }
+    }
+
+    &__tag_dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+}
+
+// R&D Process
+.rd-process {
+    &__title {
+        font-size: 3.2rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__list {
+        display: flex;
+        align-items: stretch;
+        gap: 12px;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
+    }
+
+    &__item {
+        flex: 1;
+        min-width: 0;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+        @media screen and (max-width: 768px) {
+            flex: none;
+            width: 100%;
+            padding: 20px;
+        }
+
+        // 768px以下では、1行のときはカード内の中央に置き、折り返すときは左揃えにする
+        // （inline-block にすると、1行のときは文字幅に縮んで親の text-align: center で中央に置かれ、
+        //   折り返すときはカード幅に広がる。justify で1行目の右端の余りを文字間に配分して左右の余白をそろえ、
+        //   最後の行は justify でも左揃えになる）
+        p {
+            @media screen and (max-width: 768px) {
+                display: inline-block;
+                text-align: justify;
+            }
+        }
+    }
+
+    &__item_title {
+        font-size: 2rem;
+        line-height: 1.5;
+        margin-bottom: 16px;
+
+        // 1118px以下では1つ目のタイトルが2行になるため、4つとも2行分の高さを確保して本文位置を揃える。
+        // 余白はタイトル上ではなく、タイトルと本文の間に出すため上揃えにする
+        @media screen and (max-width: 1118px) {
+            min-height: calc(1.5em * 2);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            // カード幅に余裕ができてタイトルが折り返されなくなるため、2行分の高さ確保を解除する
+            display: block;
+            min-height: 0;
+        }
+    }
+
+    &__arrow {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 20px;
+            height: auto;
+
+            @media screen and (max-width: 768px) {
+                width: 30px;
+            }
         }
     }
 }
