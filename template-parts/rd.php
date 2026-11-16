@@ -5,7 +5,7 @@
   </div>
 
   <ul class="rd__list">
-    <li class="rd__item bg-white radius-24">
+    <li class="rd__item bg-white radius-20">
       <div class="mb-20">
         <h3 class="rd__item_title mb-12">GaiaMetrics</h3>
         <span class="rd__tag rd__tag--red bold">
@@ -20,7 +20,22 @@
       </a>
     </li>
 
-    <li class="rd__item bg-white radius-24">
+    <li class="rd-portfolio__item bg-white radius-20">
+      <div class="mb-20">
+        <h3 class="rd-portfolio__item_title mb-12 helvetica">Gammon S</h3>
+        <span class="rd-portfolio__tag rd-portfolio__tag--red bold">
+          <span class="rd-portfolio__tag_dot"></span>
+          Venture型
+        </span>
+      </div>
+      <p class="mb-16">テクノロジーと集合知を掛け合わせ、マインドスポーツにおける新たな交流の場づくりと、金融・投資戦略の研究開発を通じて、新たな価値を創出するプロジェクト。</p>
+      <a class="rd-portfolio__item_link" href="https://gammon-s.co.jp/" target="_blank" rel="noopener noreferrer">
+        <span>Gammon Sを見る</span>
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/arrow.png" alt="">
+      </a>
+    </li>
+
+    <li class="rd__item bg-white radius-20">
       <div class="mb-20">
         <h3 class="rd__item_title mb-12">Question Frontier</h3>
         <span class="rd__tag rd__tag--orange bold">
