@@ -3619,6 +3619,15 @@
 // 先頭要素の margin-top が body まで突き抜けて固定ヘッダー（#header）のロゴが押し下げられないよう、余白を .rd-children 内に閉じ込める
 .rd-children {
     display: flow-root;
+    // 中身が少ないとき（R&D Media の投稿0件など）も、余った高さまで伸ばしてフッターを画面下部に表示する
+    flex-grow: 1;
+}
+
+// R&D子ページのみ、body を画面の高さいっぱいの縦並びにする（.rd-children を直下に含む body だけが対象なので、他のページには影響しない）
+body:has(> .rd-children) {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 // 見出しラベル（rd内共通）
@@ -4032,6 +4041,29 @@
             @media screen and (max-width: 768px) {
                 width: 30px;
             }
+        }
+    }
+}
+
+// R&D Media
+.rd-media {
+    // 一覧用スタイル（archive__list など）を使うために付けている .section-archive の margin-top を打ち消し、
+    // R&Dの他のセクションと同じ間隔（.section の padding のみ）にする
+    margin-top: 0;
+
+    &__title {
+        font-size: 3.2rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &__cat_title {
+        font-size: 2.8rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 2.4rem;
         }
     }
 }

@@ -2637,3 +2637,12 @@ form {
     align-items: center;
     gap: 16px;
 }
+
+// 768px以下で表示するスマホ用の「もっと見る」（.pc-none の中のボタン）を左右中央に配置する
+.pc-none > .more_btn {
+    @media screen and (max-width: 768px) {
+        display: flex;
+        width: fit-content;
+        margin-inline: auto;
+    }
+}

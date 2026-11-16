@@ -2484,3 +2484,11 @@ form .recapcha-txt a {
   align-items: center;
   gap: 16px;
 }
+
+@media screen and (max-width: 768px) {
+  .pc-none > .more_btn {
+    display: flex;
+    width: fit-content;
+    margin-inline: auto;
+  }
+}
