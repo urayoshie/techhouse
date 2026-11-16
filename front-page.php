@@ -175,6 +175,9 @@
           </div>
         </div>
         <div class="sec_contents">
+          <h3>経営と事業を前に進める実践知</h3>
+          <p class="mt-16">新規事業・経営戦略から、組織・人材、資本戦略、DX・AI、UX・マーケティングまで。<br>
+            事業の創出・成長・変革に役立つ専門知識と実践方法を発信します。</p>
           <?php
           $media_query = new WP_Query(array(
             'post_type'      => 'media_post',
@@ -183,7 +186,7 @@
           ?>
 
           <?php if ($media_query->have_posts()) : ?>
-            <ul class="archive__list">
+            <ul class="archive__list mt-32">
               <?php while ($media_query->have_posts()) : $media_query->the_post(); ?>
                 <li class="archive__item">
                   <a href="<?php the_permalink(); ?>">
@@ -209,8 +212,15 @@
               </a>
             </div>
           <?php endif; ?>
-          <div class="mt-80">
-            <a class="note-btn center radius-24" href="https://note.com/techhouse_works" target="_blank" rel="noopener noreferrer">
+
+          <div class="separator mt-60"></div>
+
+          <div class="mt-60">
+            <h3>思想・ビジョン・挑戦の記録</h3>
+            <p class="mt-16">私たちが何を考え、なぜ挑戦し、どのような未来を実現しようとしているのか。<br>
+              経営メンバーそれぞれの視点から、その思想と挑戦の過程を綴ります。</p>
+            <a class="note-btn center radius-24 mt-40" href="https://note.com/techhouse_works/m/m50a483a7e04c" target="_blank" rel="noopener noreferrer" style="
+              max-width: 100%;">
               <img src="<?php echo get_template_directory_uri(); ?>/assets/images/top/note.png" alt="note">
               <p class="bold">TechHouse.Works<span style="display: inline-block;">公式note</span></p>
             </a>
