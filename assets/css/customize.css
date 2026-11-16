@@ -3166,6 +3166,13 @@
 
 .rd-children {
   display: flow-root;
+  flex-grow: 1;
+}
+
+body:has(> .rd-children) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .rd-label {
@@ -3542,5 +3549,25 @@
 @media screen and (max-width: 768px) {
   .rd-process__arrow img {
     width: 30px;
+  }
+}
+
+.rd-media {
+  margin-top: 0;
+}
+.rd-media__title {
+  font-size: 3.2rem;
+}
+@media screen and (max-width: 768px) {
+  .rd-media__title {
+    font-size: 2.4rem;
+  }
+}
+.rd-media__cat_title {
+  font-size: 2.8rem;
+}
+@media screen and (max-width: 768px) {
+  .rd-media__cat_title {
+    font-size: 2.4rem;
   }
 }

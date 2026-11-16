@@ -17,6 +17,18 @@ add_action('init', function () {
     'rewrite' => ['slug' => 'insights'],
   ]);
 
+  // R&Dメディア投稿
+  register_post_type('rd_media_post', [
+    'label' => 'R&Dメディア投稿',
+    'public' => true,
+    'menu_position' => 7,
+    'menu_icon' => 'dashicons-admin-post',
+    'supports' => ['thumbnail', 'title', 'editor'],
+    'has_archive' => true,
+    'show_in_rest' => true,
+    'rewrite' => ['slug' => 'rd/insights'],
+  ]);
+
   // 事例投稿専用カテゴリ
   register_taxonomy('case_category', 'case_post', [
     'label' => '事例カテゴリー',
@@ -31,6 +43,14 @@ add_action('init', function () {
     'hierarchical' => true,
     'show_in_rest' => true,
     'rewrite' => ['slug' => 'insights'],
+  ]);
+
+  // R&Dメディア投稿専用カテゴリ
+  register_taxonomy('rd_media_category', 'rd_media_post', [
+    'label' => 'R&Dメディアカテゴリー',
+    'hierarchical' => true,
+    'show_in_rest' => true,
+    'rewrite' => ['slug' => 'rd/insights'],
   ]);
 
   // お知らせラベル変更
@@ -104,6 +124,52 @@ add_action('manage_media_post_posts_custom_column', function($column, $post_id) 
 
 
 /*----------------------------------------------------------*/
+/* 管理画面：R&Dメディア投稿一覧にカテゴリ・サムネイル・スラッグパス列を追加 */
+/*----------------------------------------------------------*/
+add_filter('manage_rd_media_post_posts_columns', function($columns) {
+  $new_columns = array();
+  foreach ($columns as $key => $value) {
+    $new_columns[$key] = $value;
+    if ($key === 'cb') {
+      $new_columns['thumbnail'] = 'サムネイル';
+    }
+    if ($key === 'title') {
+      $new_columns['slug_path'] = 'スラッグパス';
+      $new_columns['rd_media_category'] = 'カテゴリー';
+    }
+  }
+  return $new_columns;
+});
+
+add_action('manage_rd_media_post_posts_custom_column', function($column, $post_id) {
+  if ($column === 'thumbnail') {
+    $thumbnail = get_the_post_thumbnail($post_id, [60, 60]);
+    echo $thumbnail ? $thumbnail : '—';
+  }
+  if ($column === 'slug_path') {
+    $terms = get_the_terms($post_id, 'rd_media_category');
+    $post  = get_post($post_id);
+    if (!empty($terms) && !is_wp_error($terms) && $post) {
+      echo '/rd/insights/' . $terms[0]->slug . '/' . $post->post_name . '/';
+    } else {
+      echo '—';
+    }
+  }
+  if ($column === 'rd_media_category') {
+    $terms = get_the_terms($post_id, 'rd_media_category');
+    if (!empty($terms) && !is_wp_error($terms)) {
+      $term_names = array_map(function($term) {
+        return $term->name;
+      }, $terms);
+      echo implode(', ', $term_names);
+    } else {
+      echo '—';
+    }
+  }
+}, 10, 2);
+
+
+/*----------------------------------------------------------*/
 /* ニュース一覧ページ　URL変更 */
 /*----------------------------------------------------------*/
 // 標準投稿に /news/ のアーカイブを追加
@@ -152,6 +218,20 @@ function custom_news_rewrite()
     'index.php?media_category=$matches[1]',
     'top'
   );
+
+  // /rd/insights/カテゴリスラッグ/投稿スラッグ/ → R&Dメディア個別記事
+  add_rewrite_rule(
+    '^rd/insights/([^/]+)/([^/]+)/?$',
+    'index.php?post_type=rd_media_post&name=$matches[2]',
+    'top'
+  );
+
+  // /rd/insights/カテゴリスラッグ/ → R&Dメディアカテゴリアーカイブ
+  add_rewrite_rule(
+    '^rd/insights/([^/]+)/?$',
+    'index.php?rd_media_category=$matches[1]',
+    'top'
+  );
 }
 
 add_action('init', 'custom_news_rewrite');
@@ -174,6 +254,71 @@ add_filter('post_type_link', function ($url, $post) {
   $term_slug = $terms[0]->slug;
   return home_url('/insights/' . $term_slug . '/' . $post->post_name . '/');
 }, 10, 2);
+
+// rd_media_postのURLを /rd/insights/カテゴリ/投稿名/ に変更
+add_filter('post_type_link', function ($url, $post) {
+  if ($post->post_type !== 'rd_media_post') return $url;
+  $terms = get_the_terms($post->ID, 'rd_media_category');
+  if (empty($terms) || is_wp_error($terms)) return $url;
+  $term_slug = $terms[0]->slug;
+  return home_url('/rd/insights/' . $term_slug . '/' . $post->post_name . '/');
+}, 10, 2);
+
+
+/*----------------------------------------------------------*/
+/* R&Dメディア：公開記事のあるカテゴリーの取得・noindex制御 */
+/*----------------------------------------------------------*/
+// 公開記事が1件以上あるR&Dメディアカテゴリーを作成順（問い・機会探索 → 未来洞察・リサーチ → 仮説・実験）で取得
+// R&Dページのセクション・一覧ページのタブ表示と noindex の判定で同じ条件を使い、表示と index の状態がずれないようにする
+function get_rd_media_terms()
+{
+  $terms = get_terms(array(
+    'taxonomy'   => 'rd_media_category',
+    'hide_empty' => true,
+    'orderby'    => 'term_id',
+  ));
+  return is_wp_error($terms) ? array() : $terms;
+}
+
+// AIOSEOのサイトマップ表示用スタイル（/default-sitemap.xsl）で「R&Dメディア投稿 サイトマップ」が真っ白になる対策
+// AIOSEOはこのスタイルに投稿タイプ・タクソノミーの名前（singular_name）を変換せずに書き込むため、
+// 名前の「&」でXMLとして読み込めずエラーになる（AIOSEO v5.0.3 時点の不具合）。
+// このスタイルを生成するリクエストのときだけ「&」を「&amp;」に変換し、管理画面などの表示は変えない
+function is_aioseo_sitemap_xsl_request()
+{
+  $path = isset($_SERVER['REQUEST_URI']) ? wp_parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) : '';
+  return is_string($path) && substr($path, -strlen('/default-sitemap.xsl')) === '/default-sitemap.xsl';
+}
+
+function escape_label_for_aioseo_sitemap_xsl($labels)
+{
+  if (is_aioseo_sitemap_xsl_request()) {
+    $labels->singular_name = esc_html($labels->singular_name);
+  }
+  return $labels;
+}
+add_filter('post_type_labels_rd_media_post', 'escape_label_for_aioseo_sitemap_xsl');
+add_filter('taxonomy_labels_rd_media_category', 'escape_label_for_aioseo_sitemap_xsl');
+
+// AIOSEOが出力する robots メタに noindex を追加する
+// （AIOSEOが robots メタを出力しているため、テーマで <meta name="robots"> を直接出すと重複するので、AIOSEOのフィルターで制御する）
+// ・/rd/insights/カテゴリスラッグ/：そのカテゴリーの公開記事が0件なら noindex
+// ・/rd/insights/：公開記事のあるカテゴリーが1つもなければ noindex
+// ・/rd/media/（R&Dの子ページ）：同上。記事0件のときは R&D Media のセクションが非表示になり中身がないため
+// 記事が入ると条件から外れ、AIOSEOの通常の設定（index）に戻る
+add_filter('aioseo_robots_meta', function ($attributes) {
+  if (is_tax('rd_media_category')) {
+    $term = get_queried_object();
+    if ($term instanceof WP_Term && $term->count === 0) {
+      $attributes['noindex'] = 'noindex';
+    }
+  } elseif (is_post_type_archive('rd_media_post') || is_page('rd/media')) {
+    if (empty(get_rd_media_terms())) {
+      $attributes['noindex'] = 'noindex';
+    }
+  }
+  return $attributes;
+});
 
 
 // タイトルタグ出力

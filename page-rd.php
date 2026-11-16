@@ -32,6 +32,9 @@
   <!-- Process_テンプレートパーツ呼び出し -->
   <?php get_template_part('template-parts/rd/process'); ?>
 
+  <!-- Media_テンプレートパーツ呼び出し -->
+  <?php get_template_part('template-parts/rd/media'); ?>
+
   <?php get_sidebar('contact'); ?>
 
 </main>
